@@ -29,6 +29,10 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<script src="https://cdn.jsdelivr.net/npm/wowjs@1.1.2/dist/wow.min.js"></script>
+
+
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -45,34 +49,82 @@
 
 
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-primary navbar-light shadow p-0" style="height: 120px;">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light  sticky-top p-0" style="height: 40px;">
+        <div class="container-fluid">
+            <div class="navbar-collapse">
+                <ul class="navbar-nav w-100 d-flex align-items-center justify-content-between">
+                    <!-- Location aligned to the left -->
+                    <li class="nav-item px-5">
+                        <a href="https://goo.gl/maps/example" class="nav-link text-primary">
+                            <i class="fa fa-map-marker-alt me-2"></i>Jhimruk-05, Machchhi, Pyuthan
+                        </a>
+                    </li>
+                    <!-- Phone and Email aligned to the right -->
+                    <div class="d-flex align-items-center">
+                        <li class="nav-item me-3">
+                            <a href="tel:+977-1234567890" class="nav-link text-primary">
+                                <i class="fa fa-phone me-2"></i>+977 9866863175
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="mailto:jhimruk.balshikshyass@gmail.com" class="nav-link text-primary"
+                                style="text-transform: lowercase;">
+                                <i class="fa fa-envelope me-2"></i>jhimruk.balshikshyass@gmail.com
+                            </a>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    {{-- <nav class="navbar navbar-expand-lg bg-primary navbar-light  p-0" style="height: 100px;">
         <a href="{{ url('/') }}" class="navbar-brand d-flex flex-column align-items-start px-4 px-lg-5">
             <h2 class="m-0 text-white"><i class="fa fa-book me-3"></i>श्री बाल शिक्षा मा वि</h2>
-            <small class="text-white" style="margin-top: 15px; margin-left: 50px;">
-                <i class="fa fa-map-marker-alt me-2"></i>Jhimruk-05, Machchhi, Pyuthan
+            <small class="text-white" style="margin-top: 5px; margin-left: 50px;">
+                Jhimruk-05, Machchhi
             </small>
         </a>
-        {{-- <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button> --}}
-
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav ms-auto d-flex align-items-center" style="padding-left: 0;">
-                <li class="nav-item mb-0 me-3">
-                    <a href="tel:+977-1234567890" class="nav-link text-white">
-                        <i class="fa fa-phone me-2"></i>086-500001
-                    </a>
-                </li>
-                <li class="nav-item mb-0">
-                    <a href="mailto:jhimruk.balshikshyass@gmail.com" class="nav-link text-white"
-                        style="text-transform: lowercase;">
-                        <i class="fa fa-envelope me-2"></i>jhimruk.balshikshyass@gmail.com
-                    </a>
-                </li>
-            </ul>
+    </nav> --}}
+    <nav class="navbar navbar-expand-lg bg-primary navbar-light p-0" style="height: 100px;">
+        <a href="{{ url('/') }}" class="navbar-brand d-flex flex-column align-items-start px-4 px-lg-5">
+            <h2 class="m-0 text-white"><i class="fa fa-book me-3"></i>श्री बाल शिक्षा मा वि</h2>
+            <small class="text-white" style="margin-top: 5px; margin-left: 50px;">
+                Jhimruk-05, Machchhi
+            </small>
+        </a>
+    
+        <!-- Social Media Icons -->
+        <div class="d-flex align-items-center ms-auto me-4">
+            <!-- Facebook Icon -->
+            <a class="btn btn-outline-light btn-social me-3 social-icon" 
+               href="https://www.facebook.com/profile.php?id=100090991036442" 
+               target="_blank" 
+               style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background-color: #3b5998;">
+                <i class="fab fa-facebook-f text-white"></i>
+            </a>
+            <!-- YouTube Icon -->
+            <a class="btn btn-outline-light btn-social me-3 social-icon" 
+               href="https://www.youtube.com" 
+               target="_blank" 
+               style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background-color: #FF0000;">
+                <i class="fab fa-youtube text-white"></i>
+            </a>
         </div>
-
     </nav>
+    
+    <style>
+        .social-icon {
+            transition: transform 0.3s ease;
+        }
+    
+        .social-icon:hover {
+            transform: scale(1.2); /* Zoom In */
+        }
+    </style>
+    
+    
 
 
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0" style="height: 50px;">
@@ -87,6 +139,8 @@
                     class="nav-item nav-link {{ request()->is('about') ? 'active' : '' }}">About</a>
                 <a href="{{ url('courses') }}"
                     class="nav-item nav-link {{ request()->is('courses') ? 'active' : '' }}">Courses</a>
+                <a href="{{ url('message') }}"
+                    class="nav-item nav-link {{ request()->is('message') ? 'active' : '' }}">Message</a>
                 <div class="nav-item dropdown">
                     <a href="#"
                         class="nav-link dropdown-toggle {{ request()->is('team') || request()->is('testimonial') ? 'active' : '' }}"
@@ -100,18 +154,14 @@
                 </div>
                 <a href="{{ url('#') }}"
                     class="nav-item nav-link {{ request()->is('#') ? 'active' : '' }}">Gallary</a>
-                <a href="{{ url('#') }}"
-                    class="nav-item nav-link {{ request()->is('#') ? 'active' : '' }}">Notice</a>
+                <a href="{{ url('notice') }}"
+                    class="nav-item nav-link {{ request()->is('notice') ? 'active' : '' }}">Notice</a>
                 <a href="{{ url('contact') }}"
                     class="nav-item nav-link {{ request()->is('contact') ? 'active' : '' }}">Contact</a>
             </div>
         </div>
     </nav>
-
-    <nav class="navbar navbar-expand-lg bg-light-green navbar-light shadow p-0" style="height: 30px;">
-        {{-- <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button> --}}
+    <nav class="navbar navbar-expand-lg bg-white navbar-light  p-0" style="height: 30px;">
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-0 w-100 p-0">
                 <!-- Centered "Notice" with better vertical alignment -->
@@ -119,55 +169,73 @@
                     Notice
                 </h6>
                 <marquee>
-                    <a href="#" style="color:green; line-height: 3.5;">This is a scrolling notice! Click here for more
-                        information.</a>
+                    @forelse($latestNotices as $notice)
+                        <a href="{{ url('notice', $notice->id) }}"
+                            style="color:rgb(19, 132, 238); line-height: 3.5;">
+                            {{ $notice->title }} &nbsp;  &nbsp;
+                        </a>
+                    @empty
+                        <span style="color:red; line-height: 3.5;">No notice available</span>
+                    @endforelse
                 </marquee>
             </div>
         </div>
     </nav>
 
-
     @yield('content')
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5 justify-content-center text-center">
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Quick Link</h4>
-                    <a class="btn btn-link" href="{{ url('about') }}">About Us</a>
-                    <a class="btn btn-link" href="{{ url('contact') }}">Contact Us</a>
-                    <a class="btn btn-link" href="">Privacy Policy</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">FAQs & Help</a>
+    <div class="container-fluid bg-dark text-light footer pt-2 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-4">
+            <div class="row g-5">
+                <div class="col-lg-2 col-md-6">
+                    <h4 class="text-white mb-3" style="margin-left: 0;">Quick Link</h4>
+                    <a class="btn btn-link" href="" style="padding-left: 0; text-align: left;">About Us</a>
+                    <a class="btn btn-link" href="" style="padding-left: 0; text-align: left;">Contact Us</a>
+                    <a class="btn btn-link" href="" style="padding-left: 0; text-align: left;">Courses</a>
+                    <a class="btn btn-link" href="" style="padding-left: 0; text-align: left;">Notices</a>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Contact</h4>
-                    <p class="mb-3 d-flex align-items-start">
-                        <i class="fa fa-map-marker-alt me-2"></i>
-                        <span class="text-truncate">Jhimruk-05, Machchhi, Pyuthan</span>
-                    </p>
 
-                    <p class="mb-3 d-flex align-items-start">
-                        <i class="fa fa-phone-alt me-3"></i>
-                        <span>086-500001</span>
-                    </p>
-                    <p class="mb-4 d-flex align-items-start">
-                        <i class="fa fa-envelope me-3"></i>
-                        <span>jhimruk.balshikshyass@gmail.com</span>
-                    </p>
-                    <div class="d-flex justify-content-center pt-2">
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="text-white mb-3">Contact</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-2"></i>Jhimruk-05, Machchhi, Pyuthan </p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+977 9866863175</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>jhimruk.balshikshyass@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social"
+                            href="https://www.facebook.com/profile.php?id=100090991036442" target="blank"><i
                                 class="fab fa-facebook-f"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i
-                                class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Newsletter</h4>
-                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                    <h4 class="text-white mb-3">Gallery</h4>
+                    <div class="row g-2 pt-2">
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">School Newsletter</h4>
+                    <p>Stay updated with the latest events, achievements, and announcements from our school community.
+                    </p>
+
                     <div class="position-relative mx-auto" style="max-width: 400px;">
                         <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text"
                             placeholder="Your email">
@@ -177,17 +245,29 @@
                 </div>
             </div>
         </div>
+        {{-- <div class="container">
+            <div class="copyright d-flex justify-content-center justify-content-md-between align-items-center">
+                <p class="mb-0 text-center">
+                    &copy; <a class="border-bottom" href="#">Balshikshya S S</a>, All Rights Reserved 2024.
+                </p>
+                <div class="text-end">
+                    Designed By <a class="border-bottom" href="#">Atirab Techno Pvt. Ltd</a>
+                </div>
+            </div>
+        </div> --}}
         <div class="container">
-            <div class="copyright text-center">
-                <div class="row">
-                    <div class="col-md-12">
-                        &copy; <a class="border-bottom" href="#">Balshikshya S S</a>, All Right Reserved 2024!.
-                    </div>
+            <div
+                style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 15px 0; font-size: 14px; color: rgba(255, 255, 255, 0.7);">
+                <p style="margin: 0 auto; text-align: center; flex-grow: 0;">
+                    &copy; <a href="#">Balshikshya S S</a>, All Rights Reserved 2024.
+                </p>
+                <div style="text-align: right; flex-shrink: 0;">
+                    Designed By <a href="#">Atirab Techno Pvt. Ltd</a>
                 </div>
             </div>
         </div>
-    </div>
 
+    </div>
 
     <!-- Footer End -->
 
@@ -205,7 +285,7 @@
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="{{url('js/main.js')}}"></script>
 </body>
 
 </html>

@@ -12,14 +12,12 @@
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-sm-10 col-lg-8">
-                                <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Best Government Education
+                                <h5 class="text-primary text-uppercase mb-3 animated slideInDown">सर्वोत्तम सरकारी शिक्षा
                                 </h5>
-                                <h1 class="display-3 text-white animated slideInDown">Empowering Future Leaders Through
-                                    Quality Education</h1>
-                                <p class="fs-5 text-white mb-4 pb-2">Providing equal educational opportunities for every
-                                    student. Fostering holistic development with a focus on academic excellence, cultural
-                                    values, and community service. Committed to building a brighter future for Nepal's next
-                                    generation.</p>
+                                <h1 class="display-3 text-white animated slideInDown">शिक्षा : विकास र प्रगतिको मार्ग</h1>
+                                <p class="fs-5 text-white mb-4 pb-2">हरेक विद्यार्थीका लागि समान शैक्षिक अवसर प्रदान गर्दै।
+                                    शैक्षिक उत्कृष्टता, सांस्कृतिक मूल्य र सामुदायिक सेवामा केन्द्रित समग्र विकासलाई
+                                    प्रोत्साहन गर्दै। नेपालको भावी पुस्ताको उज्ज्वल भविष्य निर्माणमा प्रतिबद्ध।</p>
                                 <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read
                                     More</a>
                                 <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join
@@ -36,16 +34,15 @@
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-sm-10 col-lg-8">
-                                <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Quality Education for
-                                    Every Student
+                                <h5 class="text-primary text-uppercase mb-3 animated slideInDown">प्रत्येक विद्यार्थीका लागि
+                                    गुणस्तरीय शिक्षा
                                 </h5>
-                                <h1 class="display-3 text-white animated slideInDown">Education is the Key to a Brighter
-                                    Future
+                                <h1 class="display-3 text-white animated slideInDown">शिक्षा उज्ज्वल भविष्यको कुञ्जी हो
                                 </h1>
-                                <p class="fs-5 text-white mb-4 pb-2">Education is the foundation of a bright future. Our
-                                    school provides quality learning opportunities that inspire curiosity, foster
-                                    creativity, and prepare students for success in life. Join us in building a strong
-                                    educational path for every child.</p>
+                                <p class="fs-5 text-white mb-4 pb-2">शिक्षा उज्ज्वल भविष्यको आधार हो। हाम्रो विद्यालयले
+                                    जिज्ञासा उत्पन्न गर्ने, सिर्जनशीलतालाई प्रोत्साहन गर्ने, र जीवनमा सफलताका लागि
+                                    विद्यार्थीलाई तयार गर्ने गुणस्तरीय सिकाइ अवसरहरू प्रदान गर्दछ। प्रत्येक बालबालिकाको लागि
+                                    एक बलियो शैक्षिक मार्ग निर्माण गर्न हामीसँग सामेल हुनुहोस्।</p>
 
                                 <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read
                                     More</a>
@@ -70,7 +67,8 @@
                         <div class="p-4">
                             <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
                             <h5 class="mb-3">Skilled Instructors</h5>
-                            <p>Our skilled instructors are dedicated to providing high-quality education, offering personalized learning experiences that empower students to reach their full potential.</p>
+                            <p>Our skilled instructors are dedicated to providing high-quality education, offering
+                                personalized learning experiences that empower students to reach their full potential.</p>
 
                         </div>
                     </div>
@@ -157,6 +155,44 @@
     </div>
     <!-- About End -->
 
+    <!-- message Start -->
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <!-- Section Title -->
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Message From Us</h6>
+                <h1 class="mb-5">Messages</h1>
+            </div>
+
+            <!-- Messages Section -->
+            <div class="row g-4 align-items-start">
+                @foreach ($messages as $message)
+                    <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="bg-light p-4 rounded shadow" style="height: 350px;">
+                            <h4 class="text-primary mb-3">{{ $message->title }}</h4>
+                            <p class="message-content">
+                                {{ Str::limit($message->content, 400, '...') }}
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <div class="d-flex align-items-center">
+                                    <img src="{{ asset('storage/' . $message->image) }}" alt="{{ $message->author }}'s Image"
+                                        class="img-fluid rounded-circle shadow"
+                                        style="width: 65px; height: 65px; object-fit: cover;">
+                                    <p class="text-primary fw-bold mb-0 ms-3">- {{ $message->author }}</p>
+                                </div>
+                                <a href="{{ url('message', $message->id) }}"
+                                    class="btn btn-primary rounded-pill px-4 py-2 shadow-sm hover-effect">
+                                    Read More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <!-- Message End -->
 
     <!-- Categories Start -->
     <div class="container-xxl py-5 category">
@@ -338,43 +374,41 @@
                 <h1 class="mb-5">Our Teachers</h1>
             </div>
             <div class="row g-4">
-                <div class="col-12 text-center d-flex justify-content-center align-items-center" style="min-height: 200px;">
+                <div class="col-12 text-center d-flex justify-content-center align-items-center flex-wrap"
+                    style="min-height: 200px;">
                     @forelse ($teamMembers as $member)
-                        <div class="team-item bg-light mb-4">
-                            <div class="overflow-hidden">
-                                <img class="img-fluid" src="{{ asset('storage/' . $member->image) }}" alt="{{ $member->name }}">
+                        <div class="team-item bg-light mb-4 mx-3" style="width: 220px; height: 350px;">
+                            <!-- Image Container -->
+                            <div class="overflow-hidden" style="width: 100%; height: 200px;">
+                                <img src="{{ asset('storage/' . $member->image) }}" alt="{{ $member->name }}"
+                                    style="width: 220px; height: 220px; object-fit: cover;">
                             </div>
-                            <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                                <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                    <a class="btn btn-sm-square btn-primary mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-sm-square btn-primary mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-sm-square btn-primary mx-1" href="#"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                            <div class="text-center p-4">
+                            <!-- Content -->
+                            <div class="text-center p-3">
                                 <h5 class="mb-0">{{ $member->name }}</h5>
                                 <small>{{ $member->post }}</small>
-                                <div class="mt-2">
-                                    <small>
-                                        <i class="fas fa-phone-alt text-primary me-2"></i>
-                                        {{ $member->mobile ?? 'Not Provided' }}
-                                    </small>
-                                </div>
-                                <div>
-                                    <small>
-                                        <i class="fas fa-envelope text-primary me-2"></i>
-                                        {{ $member->email ?? 'Not Provided' }}
-                                    </small>
-                                </div>
+                                @if ($member->mobile)
+                                    <div class="mt-2">
+                                        <small>
+                                            <i class="fas fa-phone-alt text-primary me-2"></i>
+                                            {{ $member->mobile }}
+                                        </small>
+                                    </div>
+                                @endif
+                                @if ($member->email)
+                                    <div>
+                                        <small>
+                                            <i class="fas fa-envelope text-primary me-2"></i>
+                                            {{ $member->email }}
+                                        </small>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     @empty
                         <p class="text-center text-muted">No team members added yet.</p>
                     @endforelse
                 </div>
-                
-                
-                
             </div>
         </div>
     </div>

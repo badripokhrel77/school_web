@@ -20,6 +20,8 @@
                         <th scope="col">Name</th>
                         <th scope="col">Image</th>
                         <th scope="col">Post</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -29,15 +31,17 @@
                             <td>{{ $index + 1 }}</td>
                             <td>{{ $member->name }}</td>
                             <td>
-                                <img src="{{ asset('storage/' . $member->image) }}" alt="Team Member Image" class="img-thumbnail" style="max-width: 80px;">
+                                <img src="{{$member->image ? asset('storage/' . $member->image) : 'https://via.placeholder.com/80' }}" alt="Team Member Image" class="img-thumbnail"  style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%;">
                             </td>
                             <td>{{ $member->post }}</td>
+                            <td>{{ $member->mobile ?? '-'}}</td>
+                            <td>{{ $member->email ?? '-' }}</td>
                             <td>
-                                <a href="{{ url('admin/team/' . $member->id . '/edit') }}" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="{{ url('admin/team/' . $member->id . '/edit') }}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
                                 <form action="{{ url('admin/team/' . $member->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this member?');">Delete</button>
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this member?');"><i class="fas fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>

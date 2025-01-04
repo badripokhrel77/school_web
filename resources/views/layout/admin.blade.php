@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title','Admin Dashboard')</title>
+    <title>@yield('title', 'Admin Dashboard')</title>
 
     <!-- Bootstrap CSS -->
-    <link href="{{url('https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ url('https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- FontAwesome Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="{{ url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css') }}" rel="stylesheet">
 
 
 
     <!-- Custom CSS -->
-    <link href="{{url('css/admin.css')}}" rel="stylesheet">
+    <link href="{{ url('css/admin.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -31,7 +31,7 @@
 
             <ul class="list-unstyled components">
                 <li class="{{ Request::is('/') ? 'active' : '' }}">
-                    <a href="{{url('admin')}}"><i class="fa fa-tachometer-alt"></i> Dashboard</a>
+                    <a href="{{ url('admin') }}"><i class="fa fa-tachometer-alt"></i> Dashboard</a>
                 </li>
                 <li class="{{ Request::is('carousel') ? 'active' : '' }}">
                     <a href="#"><i class="fa fa-images"></i> Carousel</a>
@@ -41,6 +41,9 @@
                 </li>
                 <li class="{{ Request::is('about') ? 'active' : '' }}">
                     <a href="#"><i class="fa fa-info-circle"></i> About</a>
+                </li>
+                <li class="{{ Request::is('message') ? 'active' : '' }}">
+                    <a href="admin/message"><i class="fas fa-comment-alt"></i> Message</a>
                 </li>
                 <li class="{{ Request::is('categories') ? 'active' : '' }}">
                     <a href="#"><i class="fa fa-list"></i> Categories</a>
@@ -54,14 +57,18 @@
                 <li class="{{ Request::is('testimonial') ? 'active' : '' }}">
                     <a href="#"><i class="fa fa-comment-alt"></i> Testimonial</a>
                 </li>
+                <li class="{{ Request::is('notice') ? 'active' : '' }}">
+                    <a href="{{ url('admin/notice') }}"><i class="fas fa-bullhorn"></i> Notice</a>
+                </li>
                 <li class="{{ Request::is('logout') ? 'active' : '' }}">
-                    <a href="#"><i class="fa fa-sign-out-alt"></i> Logout</a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a href="#" onclick="this.closest('form').submit();"
+                            class="text-black text-decoration-none"><i class="fa fa-sign-out-alt"></i>Logout</a>
+                        {{-- <a href="#"><i class="fa fa-sign-out-alt"></i> Logout</a> --}}
+                    </form>
                 </li>
             </ul>
-            
-
-
-
 
         </nav>
 
@@ -82,12 +89,12 @@
 
 
     <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+    <script src="{{ url('https://code.jquery.com/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ url('https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js') }}"></script>
+    <script src="{{ url('https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js') }}"></script>
 
     <!-- Custom JS -->
-    <script src="js/admin.js"></script>
+    <script src="{{ url('js/admin.js') }}"></script>
 </body>
 
 </html>

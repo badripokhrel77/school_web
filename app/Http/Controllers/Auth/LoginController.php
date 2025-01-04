@@ -46,7 +46,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home'; // You can change this to where you want to redirect the user after login
+    protected $redirectTo = '/admin'; // You can change this to where you want to redirect the user after login
 
     /**
      * Log the user out of the application.
@@ -59,6 +59,6 @@ class LoginController extends Controller
         $request->session()->invalidate(); // Invalidate the session
         $request->session()->regenerateToken(); // Regenerate the CSRF token
 
-        return redirect('/login'); // Redirect to login page after logout
+        return redirect('/home'); // Redirect to login page after logout
     }
 }

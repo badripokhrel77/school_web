@@ -27,10 +27,14 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{url('css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<script src="https://cdn.jsdelivr.net/npm/wowjs@1.1.2/dist/wow.min.js"></script>
+
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{url('css/style.css')}}" rel="stylesheet">
 </head>
 
 <body>
@@ -60,6 +64,8 @@
                     class="nav-item nav-link {{ request()->is('about') ? 'active' : '' }}">About</a>
                 <a href="{{ url('courses') }}"
                     class="nav-item nav-link {{ request()->is('courses') ? 'active' : '' }}">Courses</a>
+                    <a href="{{ url('message') }}"
+                    class="nav-item nav-link {{ request()->is('message') ? 'active' : '' }}">Message</a>
                 <div class="nav-item dropdown">
                     <a href="#"
                         class="nav-link dropdown-toggle {{ request()->is('team') || request()->is('testimonial') ? 'active' : '' }}"
@@ -73,8 +79,8 @@
                 </div>
                 <a href="{{ url('#') }}"
                     class="nav-item nav-link {{ request()->is('#') ? 'active' : '' }}">Gallary</a>
-                <a href="{{ url('#') }}"
-                    class="nav-item nav-link {{ request()->is('#') ? 'active' : '' }}">Notice</a>
+                <a href="{{ url('notice') }}"
+                    class="nav-item nav-link {{ request()->is('notice') ? 'active' : '' }}">Notice</a>
                 <a href="{{ url('contact') }}"
                     class="nav-item nav-link {{ request()->is('contact') ? 'active' : '' }}">Contact</a>
             </div>
@@ -85,43 +91,57 @@
     @yield('content')
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5 justify-content-center text-center">
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Quick Link</h4>
-                    <a class="btn btn-link" href="{{ url('about') }}">About Us</a>
-                    <a class="btn btn-link" href="{{ url('contact') }}">Contact Us</a>
-                    <a class="btn btn-link" href="">Privacy Policy</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">FAQs & Help</a>
+    <div class="container-fluid bg-dark text-light footer pt-2 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-4">
+            <div class="row g-5">
+                <div class="col-lg-2 col-md-6">
+                    <h4 class="text-white mb-3" style="margin-left: 0;">Quick Link</h4>
+                    <a class="btn btn-link" href="" style="padding-left: 0; text-align: left;">About Us</a>
+                    <a class="btn btn-link" href="" style="padding-left: 0; text-align: left;">Contact Us</a>
+                    <a class="btn btn-link" href="" style="padding-left: 0; text-align: left;">Courses</a>
+                    <a class="btn btn-link" href="" style="padding-left: 0; text-align: left;">Notices</a>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Contact</h4>
-                    <p class="mb-3 d-flex align-items-start">
-                        <i class="fa fa-map-marker-alt me-2"></i>
-                        <span class="text-truncate">Jhimruk-05, Machchhi, Pyuthan</span>
-                    </p>
 
-                    <p class="mb-3 d-flex align-items-start">
-                        <i class="fa fa-phone-alt me-3"></i>
-                        <span>086-500001</span>
-                    </p>
-                    <p class="mb-4 d-flex align-items-start">
-                        <i class="fa fa-envelope me-3"></i>
-                        <span>jhimruk.balshikshyass@gmail.com</span>
-                    </p>
-                    <div class="d-flex justify-content-center pt-2">
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="text-white mb-3">Contact</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-2"></i>Jhimruk-05, Machchhi, Pyuthan </p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+977 9866863175</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>jhimruk.balshikshyass@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social"
+                            href="https://www.facebook.com/profile.php?id=100090991036442" target="blank"><i
+                                class="fab fa-facebook-f"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i
-                                class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Newsletter</h4>
-                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                    <h4 class="text-white mb-3">Gallery</h4>
+                    <div class="row g-2 pt-2">
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">School Newsletter</h4>
+                    <p>Stay updated with the latest events, achievements, and announcements from our school community.
+                    </p>
+
                     <div class="position-relative mx-auto" style="max-width: 400px;">
                         <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text"
                             placeholder="Your email">
@@ -131,17 +151,29 @@
                 </div>
             </div>
         </div>
+        {{-- <div class="container">
+            <div class="copyright d-flex justify-content-center justify-content-md-between align-items-center">
+                <p class="mb-0 text-center">
+                    &copy; <a class="border-bottom" href="#">Balshikshya S S</a>, All Rights Reserved 2024.
+                </p>
+                <div class="text-end">
+                    Designed By <a class="border-bottom" href="#">Atirab Techno Pvt. Ltd</a>
+                </div>
+            </div>
+        </div> --}}
         <div class="container">
-            <div class="copyright text-center">
-                <div class="row">
-                    <div class="col-md-12">
-                        &copy; <a class="border-bottom" href="#">Balshikshya S S</a>, All Right Reserved 2024!.
-                    </div>
+            <div
+                style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 15px 0; font-size: 14px; color: rgba(255, 255, 255, 0.7);">
+                <p style="margin: 0 auto; text-align: center; flex-grow: 0;">
+                    &copy; <a href="#">Balshikshya S S</a>, All Rights Reserved 2024.
+                </p>
+                <div style="text-align: right; flex-shrink: 0;">
+                    Designed By <a href="#">Atirab Techno Pvt. Ltd</a>
                 </div>
             </div>
         </div>
-    </div>
 
+    </div>
 
     <!-- Footer End -->
 
@@ -159,7 +191,7 @@
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="{{url('js/main.js')}}"></script>
 </body>
 
 </html>
